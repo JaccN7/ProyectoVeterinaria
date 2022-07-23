@@ -1,0 +1,43 @@
+<div class="container-fluid" id="ingresar" style="display: none;">
+    <h2 class="mb-3">Ingresar Mascota</h2>
+    <form id="formIngreso" method="POST">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="nombreMascota" class="form-label">Nombre Mascota:</label>
+                <input type="input" class="form-control form-control-sm" id="nombreMascota"
+                    placeholder="Nombre Mascota" name="nombreMascota" required>
+            </div>
+            <div class="col">
+                <label for="nombreTutor" class="form-label">Nombre Tutor:</label>
+                <input type="input" class="form-control form-control-sm" id="nombreTutor"
+                    placeholder="Nombre tutor legal" name="nombreTutor" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="especie" class="form-label">Especie:</label>
+                <input type="input" class="form-control form-control-sm" id="especie" placeholder="Especie"
+                    name="especie" required>
+            </div>
+            <div class="col">
+                <label for="raza" class="form-label">Raza:</label>
+                <input type="input" class="form-control form-control-sm" id="raza" placeholder="Raza"
+                    name="raza" required>
+            </div>
+            <div class="col">
+                <label for="color" class="form-label">Color:</label>
+                <input type="input" class="form-control form-control-sm" id="color" placeholder="Color"
+                    name="color" required>
+            </div>
+            <div class="col">
+                <label for="sexo" class="form-label">Sexo:</label>
+                <input type="input" class="form-control form-control-sm" id="sexo" placeholder="Sexo"
+                    name="sexo" required>
+            </div>
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Agregar Mascota</button>
+            <button type="button" class="btn btn-primary" id="cancelar">Cancelar</button>
+        </div>
+    </form>
+</div>
