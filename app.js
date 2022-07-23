@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
@@ -12,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const url = `mongodb+srv://${process.env.MONGO_ATLAS_USERNAME}:${process.env.MONGO_ATLAS_PW}@cluster0.dluii.mongodb.net/${process.env.MONGO_ATLAS_BD}?retryWrites=true&w=majority`
 
-console.log(__dirname + '\\public')
 //Conexión a BD MongoDB
 mongoose.connect(url,{
     useNewUrlParser: true,
@@ -28,8 +28,8 @@ mongoose.connect(url,{
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-//Carpeta publica | Ruta
-app.use('/public', express.static(__dirname + '\\public'));
+//Carpeta publica | Rutas
+app.use('/public', express.static(path.join(__dirname, './public')))
 
 //Rutas 
 app.use('/', require('./router/loginRoutes'));
