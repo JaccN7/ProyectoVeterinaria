@@ -5,9 +5,19 @@ const btnCancelar = document.getElementById('cancelar');
 const formIngreso = document.getElementById('formIngreso');
 const eliminar = document.querySelectorAll('.eliminar');
 const actualizar = document.querySelectorAll('.actualizar');
+const welcome = document.querySelector('.welcome');
+
+//infromacion para mostrar al cargar la pagina
+window.addEventListener('load', () => {
+    //comprobar si esta logueado
+    if (localStorage.getItem('nombre') == null) {
+        window.location.replace("/");
+    } else {
+        welcome.innerHTML= `Bienvenido ${localStorage.getItem('nombre')}`;
+    }
+});
 
 const eliminarMascota = async (id) => {
-    console.log("se esta eliminando " + id);
     try {
         await fetch(`dashboardPets/${id}`, {
             method: 'DELETE'
@@ -19,7 +29,6 @@ const eliminarMascota = async (id) => {
 };
 
 const actualizarMascota = async (id) => {
-    console.log("se esta actualizando " + id);
     let idMascota = document.querySelectorAll('.idMascota');
     let nomMascota = document.querySelectorAll('.nomMascota');
     let nomTutor = document.querySelectorAll('.nomTutor');
@@ -28,8 +37,6 @@ const actualizarMascota = async (id) => {
     let inputColor = document.querySelectorAll('.inputColor');
     let inputSexo = document.querySelectorAll('.inputSexo');
     let iconUpd = document.querySelectorAll('.iconUpd');
-    console.log(nomMascota[0].value);
-    console.log(idMascota[0].value);
     let posicion;
     try {
         for (let i = 0; i < idMascota.length; i++) {
@@ -59,14 +66,13 @@ const actualizarMascota = async (id) => {
             body: JSON.stringify({
                 id,
                 nombre: nomMascota[posicion].value,
-                tutor: nomTutor[posicion].value,
+                nombre_tutor: nomTutor[posicion].value,
                 especie: inputEsp[posicion].value,
                 raza: inputRaza[posicion].value,
                 color: inputColor[posicion].value,
                 sexo: inputSexo[posicion].value
             })
-        })
-        console.log("se esta intentando ejecutar el put");
+        });
     } catch (error) {
         console.log(error);
     }
@@ -74,17 +80,15 @@ const actualizarMascota = async (id) => {
 
 const buscarId = async (id) => {
     try {
-        console.log("se esta buscando un id en particular")
         const response = await fetch(`dashboardPets/${id}`);
         const json = await response.json();
         return json;
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 btnDesplegar.addEventListener('click', () => {
-    console.log("se esta ejecutando el código del boton desplegar");
     if (ingresar.style.display == 'none') {
         ingresar.style.display = 'block';
         mostrar.style.display = 'none';
@@ -95,8 +99,16 @@ btnDesplegar.addEventListener('click', () => {
 });
 
 btnCancelar.addEventListener('click', () => {
-    console.log("Se esta ejecutando el código que esta en el botón cancelar");
     ingresar.style.display = 'none';
     mostrar.style.display = 'block';
     formIngreso.reset();
 });
+
+//Cerrar sesión
+const cerrarSesion = () => {
+    //Borrar local storage
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('token');
+    //Volver a página principal
+    window.location.replace("/");
+};
