@@ -3,8 +3,17 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+const Joi = require('@hapi/joi');
 
 const User = require('../models/user');
+
+// Schema para Registrar Usuario
+const signupSchema = Joi.object({
+    email: Joi.string().min(6).max(255).email().required(),
+    password: Joi.string().min(6).required(),
+    nombre: Joi.string().min(6).max(50).required(),
+    rol: Joi.string().valid('admin', 'user', 'tester').required()
+});
 
 //Crear un usuario | SIGN UP
 router.post('/signup', async (req, res, next) => {
@@ -15,6 +24,11 @@ router.post('/signup', async (req, res, next) => {
         } else {
             const salt = await bcrypt.genSalt(10);
             const hash = await bcrypt.hash(req.body.password, salt);
+            //Comprobar que cumpla con el esquema
+            const resultado = await signupSchema.validateAsync(req.body);
+            if (resultado.error) {
+                res.status(400).json({ message: resultado.error.details[0].message });
+            }
             const usuario = new User({
                 _id: new mongoose.Types.ObjectId(),
                 email: req.body.email,
