@@ -3,6 +3,8 @@ const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     email: {
         type: String,
+        minlength: 6,
+        maxlength: 255,
         required: true,
         unique: true,
         match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
@@ -10,8 +12,7 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 5,
-        maxlength: 1024
+        minlength: 5
     },
     nombre: {
         type: String,
