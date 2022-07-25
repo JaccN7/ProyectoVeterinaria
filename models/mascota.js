@@ -4,11 +4,15 @@ const mascotaSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     nombre: {
         type: String,
-        required: true
+        required: true,
+        minlength: 2,
+        maxlength: 50
     },
     nombre_tutor: {
         type: String,
-        required: true
+        required: true,
+        minlength: 2,
+        maxlength: 50
     },
     especie: {
         type: String,
