@@ -9,6 +9,6 @@ router.use((req, res, next) => {
 
 router.use((error, req, res, next) => {
     res.status(error.status || 500).render("error");
-})
+});
 
 module.exports = router;

@@ -33,6 +33,7 @@ router.post('/', async (req, res, next) => {
             sexo: req.body.sexo
         });
         const result = await mascota.save();
+        console.log(result);
         res.redirect('/dashboardPets');
     } catch (error) {
         console.log(error);
@@ -55,7 +56,7 @@ router.delete('/:id', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
-        const mascota = await Mascota.findById(id);
+        await Mascota.findById(id);
         req.on('data', async (data) => {
             body = JSON.parse(data);
             body.id = id;
@@ -66,6 +67,6 @@ router.put('/:id', async (req, res, next) => {
         console.log(error);
         res.status(500).json({ message: 'Error al actualizar la mascota' });
     }
-})
+});
 
 module.exports = router;
