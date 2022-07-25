@@ -19,3 +19,9 @@ Desarrollo
 
 * Nodemon (Desarrollo): https://www.npmjs.com/package/nodemon
 * Morgan (Desarrollo): https://www.npmjs.com/package/morgan
+
+Para realizar pruebas utilizar el siguiente usuario:
+* Email: plataforma5@tester.com
+* password: Lasciate_ogni_speranza
+
+Aquí puede ver el proyecto desplegado: https://proyectonode-veterinaria.herokuapp.com/
