@@ -23,32 +23,40 @@
                                         <tr>
                                             <td>
                                                 <%= i++ %>
-                                                <input value="<%= mascota._id %>" type="hidden" class="form-control idMascota">
+                                                    <input value="<%= mascota._id %>" type="hidden"
+                                                        class="form-control idMascota">
                                             </td>
                                             <td>
-                                                <input value="<%= mascota.nombre %>" class="form-control input nomMascota" disabled="true"/>
+                                                <input value="<%= mascota.nombre %>"
+                                                    class="form-control input nomMascota" disabled="true" />
                                             </td>
                                             <td>
-                                                <input value="<%= mascota.nombre_tutor %>" class="form-control input nomTutor" disabled="true"/>
+                                                <input value="<%= mascota.nombre_tutor %>"
+                                                    class="form-control input nomTutor" disabled="true" />
                                             </td>
                                             <td>
-                                                <input value="<%= mascota.especie %>" class="form-control input inputEsp" disabled="true"/>
+                                                <input value="<%= mascota.especie %>"
+                                                    class="form-control input inputEsp" disabled="true" />
                                             </td>
                                             <td>
-                                                <input value="<%= mascota.raza %>" class="form-control input inputRaza" disabled="true"/>
+                                                <input value="<%= mascota.raza %>" class="form-control input inputRaza"
+                                                    disabled="true" />
                                             </td>
                                             <td>
-                                                <input value="<%= mascota.color %>" class="form-control input inputColor" disabled="true"/>
+                                                <input value="<%= mascota.color %>"
+                                                    class="form-control input inputColor" disabled="true" />
                                             </td>
                                             <td>
-                                                <input value="<%= mascota.sexo %>" class="form-control input inputSexo" disabled="true"/>
+                                                <input value="<%= mascota.sexo %>" class="form-control input inputSexo"
+                                                    disabled="true" />
                                             </td>
                                             <td>
                                                 <button onclick=" actualizarMascota('<%= mascota.id %>') " type="button"
                                                     class="actualizar btnAccion"><i
-                                                    class="fa-solid fa-pencil iconUpd text-primary"></i></button>
+                                                        class="fa-solid fa-pencil iconUpd text-primary"></i></button>
                                                 <button onclick=" eliminarMascota('<%= mascota.id %>') " type="button"
-                                                    class="eliminar  btnAccion"><i class="fa-solid fa-x text-danger"></i></button>
+                                                    class="eliminar  btnAccion"><i
+                                                        class="fa-solid fa-x text-danger"></i></button>
 
                                             </td>
                                         </tr>
@@ -65,5 +73,5 @@
         </div>
         <%- include ("dashboard_Form_Ingresar.ejs") %>
 
-
+            <script src="../public/js/scripts.js"></script>
             <%- include("templates/footer") %>
